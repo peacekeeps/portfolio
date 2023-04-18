@@ -40,6 +40,8 @@
 
 html {
     max-width: 100vw;
+    min-width: 230px;
+    min-height: 300px;
     height: 100vh;
     scrollbar-width: none;
 }
@@ -113,7 +115,7 @@ Cabeça
     display: block;
     position: absolute;
     top: 50px;
-    right: 250px;
+    left: -100vw;
     height: calc(100vh - 50px);
     width: 100%;
     z-index: 5;
