@@ -22,8 +22,8 @@ console.log(teste)
 
 let words = ["criativo.", "profissional.", "elegante."];
 
-let interval = 500;
-let eraseInterval = 200;
+let interval = 300;
+let eraseInterval = 100;
 let pauseInterval = 1000;
 
 function writer(arr) {
