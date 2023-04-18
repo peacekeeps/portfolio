@@ -83,4 +83,4 @@ function wordPlay(str, strLength) {
     }
 }
 
-writer(words) 
+writer(words)
