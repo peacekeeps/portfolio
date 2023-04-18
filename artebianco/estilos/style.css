@@ -113,7 +113,7 @@ Cabeça
     display: block;
     position: absolute;
     top: 50px;
-    left: 250px;
+    right: 250px;
     height: calc(100vh - 50px);
     width: 100%;
     z-index: 5;
