@@ -23,12 +23,12 @@ function test2(numb, str) {
     if (string.length === numb) {
         return string
     } else {
-            string = str.slice(0, x+1)
+            string = str.slice(x, x+1)
             x++
             console.log(string)
             setTimeout(function() {
                 test2(numb + 1, str)
-            }, 500)
+            })
         }
     }
 
