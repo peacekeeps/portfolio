@@ -1,25 +1,54 @@
+/*
+==========================
+Variáveis
+==========================
+*/
+
+// Header
 const headContainer = document.querySelector('.head-container')
 
 const headContainerY = headContainer.getBoundingClientRect().height
 
+const imageContainer = document.querySelector('.image-container')
+
+const menuBtn = document.querySelector('.menu-btn')
+
+const dropdownMenu = document.querySelector('.dropdown-menu')
+
+// Main
 const mainContainer = document.querySelector('.main-container')
 
 const titleImg = document.querySelector('.title-img')
 
 const txt = document.querySelector('#txt')
 
+
+/*
+============================
+Event Listeners
+============================
+*/
+
+// Mostra um texto alternativo caso a logo não apareça
 titleImg.addEventListener("error", function() {
-    headContainer.innerHTML = `<h1>Arte Bianco</h1>`
+    imageContainer.innerHTML = `<h1 class='img-title-error'>Arte Bianco</h1>`
 })
 
-function textAnimation() {
-    txt.textContent 
-}
+menuBtn.addEventListener('click', () => {
+  mainContainer.classList.toggle('hidden')
 
-let teste = txt.textContent
+  dropdownMenu.classList.toggle('show-menu')
+})
 
-console.log(teste)
+/*
+============================
+Funções
+============================
+*/
 
+
+
+// Função para escrever e apagar a palavra
 let words = ["criativo.", "profissional.", "elegante."];
 
 let interval = 300;
@@ -27,10 +56,10 @@ let eraseInterval = 100;
 let pauseInterval = 1000;
 
 function writer(arr) {
-  let i = 0;
+  let i = 0;  //1
   
   function writeWord() {
-    let word = arr[i];
+    let word = arr[i]; //profissional.
     let j = 0;
     
     function writeLetter() {
@@ -50,7 +79,7 @@ function writer(arr) {
     function eraseWord() {
       if (word.length > 0) {
         setTimeout(() => {
-          word = word.slice(0, -1);
+          word = word.slice(0, -1);  //
           txt.textContent = word;
           eraseWord();
         }, eraseInterval);
