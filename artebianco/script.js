@@ -9,11 +9,15 @@ const headContainer = document.querySelector('.head-container')
 
 const headContainerY = headContainer.getBoundingClientRect().height
 
+const main = document.querySelector('.main')
+
 const imageContainer = document.querySelector('.image-container')
 
 const menuBtn = document.querySelector('.menu-btn')
 
 const dropdownMenu = document.querySelector('.dropdown-menu')
+
+const links = document.querySelectorAll('.link')
 
 // Main
 const mainContainer = document.querySelector('.main-container')
@@ -34,10 +38,46 @@ titleImg.addEventListener("error", function() {
     imageContainer.innerHTML = `<h1 class='img-title-error'>Arte Bianco</h1>`
 })
 
+// Troca o position do menu de navegação
+window.addEventListener('scroll', () => {
+  let windowY = window.pageYOffset
+  
+  if (windowY > headContainerY) {
+    headContainer.classList.add('fixed-nav')
+  } else {
+    headContainer.classList.remove('fixed-nav')
+  }
+})
+
+// Menu
 menuBtn.addEventListener('click', () => {
-  mainContainer.classList.toggle('hidden')
+  main.classList.toggle('hidden')
 
   dropdownMenu.classList.toggle('show-menu')
+})
+
+links.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    if (dropdownMenu.classList.contains('show-menu')) {
+      dropdownMenu.classList.remove('show-menu')
+    }
+    if (main.classList.contains('hidden')) {
+      main.classList.remove('hidden')
+    }
+
+    const id = e.currentTarget.getAttribute('href').slice(1)
+    const element = document.getElementById(id)
+
+    let position = element.offsetTop - (headContainerY + 50) // Meu main, que seria o parente mais próximo com posição definida, começa aonde o header termina, então ele tem -50px de altura. Quando eu rodo a tela, a posição do header passa a ser sticky, e esses 50 px a menos ficam sobrando, dai tem que somar eles aqui para dar certo
+
+    console.log(element.offsetParent.offsetTop)
+
+    window.scrollTo({
+      top: position,
+    })
+  })
 })
 
 /*

@@ -1,53 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Serviços de design gráfico personalizados para destacar a sua marca. Logotipos, identidade visual e materiais impressos e digitais. Entre em contato e transforme a sua ideia em realidade visual com a Arte Bianco.">
-    <script src="https://kit.fontawesome.com/e2edc3d57c.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Serviços de design gráfico personalizados para destacar a sua marca. Logotipos, identidade visual e materiais impressos e digitais. Entre em contato e transforme a sua ideia em realidade visual com a Arte Bianco."
+    />
+    <script
+      src="https://kit.fontawesome.com/e2edc3d57c.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Arte Bianco</title>
-    <link rel="stylesheet" href="estilos/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="estilos/style.css" />
+  </head>
+  <body>
     <header>
-        <div class="head-container">
-            <div class="image-container">
-                    <img src="imagens/title-bg.png" alt="Arte Bianco" class="title-img block">
-            </div>
-            <div class="menu-container">
-                <button class="menu-btn">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-            <nav class="dropdown-menu">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Formação</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </nav>
-            </div>
+      <div class="head-container">
+        <div class="image-container">
+          <img
+            src="imagens/title-bg.png"
+            alt="Arte Bianco"
+            class="title-img block"
+          />
         </div>
+        <div class="menu-container">
+          <button class="menu-btn">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+        <nav class="dropdown-menu">
+          <ul>
+            <li><a href="#home" class="link">Home</a></li>
+            <li><a href="#projetos" class="link">Projetos</a></li>
+            <li><a href="#formação" class="link">Formação</a></li>
+            <li><a href="#contato" class="link">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <main>
-        <div class="main-container">
-            <h3>
-                Sua marca<br>
-                com<br>design
-                único<br>
-                e <span id="txt"></span><span class="blink"></span>
-            </h3>
-            <!-- <div class="test"></div> -->
-            <div class="img-container">
-                <!-- <img src="imagens/logo-mobile.png" alt="logo" class="block"> -->
-                </div>
+    <main class="main">
+      <section id="home" class="main-container">
+        <h3>
+          Sua marca<br />
+          com<br />design único<br />
+          e <span id="txt"></span><span class="blink"></span>
+        </h3>
+        <!-- <div class="test"></div> -->
+        <div class="img-container">
+          <!-- <img src="imagens/logo-mobile.png" alt="logo" class="block"> -->
         </div>
+      </section>
+      <section id="projetos" class="section">
+        <h2>Projetos</h2>
+        <article class="skill-container">
+          <div class="skill-box">
+            <div class="image-container">
+              <img src="imagens/panda-skill-sm.webp" alt="panda icon" />
+            </div>
+            <div class="text-container">
+              <h3>
+                Start 5.0
+                <span class="skill-sub-school"
+                  ><a href="https://www.saga.com.br/" target="_blank">Escola Saga</a></span
+                >
+              </h3>
+              <p class="skill-sub">
+                Artes Digitais, Design, Audiovisual, 3D e Interatividade.
+              </p>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="text-container">
+              <h3>
+                Técnico em Artes Visuais
+                <span class="skill-sub-school"
+                  ><a href="https://escolaproarte.com.br/" target="_blank">Escola ProArte</a></span
+                >
+              </h3>
+              <p class="skill-sub">
+                Design gráfico, desenho, pintura, fotografia, produção audiovisual.
+              </p>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <div class="text-container">
+              <h3>
+                Marketing
+                <span class="skill-sub-school"
+                  ><a href="https://www.sp.senac.br/" target="_blank">Senac</a></span
+                >
+              </h3>
+              <p class="skill-sub">
+                Análise de mercado, branding, comunicação, publicidade, pesquisa de mercado.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section id="formação" class="section">
+        <h2>Formação</h2>
+      </section>
+      <section id="contato" class="section">
+        <h2>Contato</h2>
+      </section>
     </main>
-    <footer>
-        
-    </footer>
+    <footer></footer>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
