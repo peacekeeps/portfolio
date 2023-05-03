@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 350px) {
+    body {
+        overflow: hidden;
+    }
+
+    main section#container-a {
+        position: relative;
+        background: radial-gradient(circle at 50% -2px, rgba(0, 0, 0, 0) 89px, rgba(255, 255, 255, 0.466) 90px);
+        width: 100%;
+        border-radius: 0;
+        transition: border-radius .5, width .5s;
+}
+    div.div-brocoli {
+        position: absolute;
+        top: -84px;
+        transition: 0s;
+    }
+}

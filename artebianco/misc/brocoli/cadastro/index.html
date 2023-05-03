@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="estilos/cadastro.css">
+    <link rel="stylesheet" href="estilos/mediaquery.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <header>
+        <span class="material-icons" id="menu_icon">menu</span>
+        <h1>CADASTRO DO CLIENTE</h1>
+    </header>
+    <nav class="menu mobile" id="menu">
+        <ul>
+            <li>Ordem de Locação</li>
+            <li>Clientes</li>
+            <li>Equipamentos</li>
+        </ul>
+    </nav>
+    <!-- <nav class="menu" id="bg-menu">
+        <ul>
+            <li>Ordem de Locação</li>
+            <li>Clientes</li>
+            <li>Equipamentos</li>
+        </ul>
+    </nav> -->
+    <main>
+        <form action="cadastro.php" method="post">
+            <h2>Dados do Cliente</h2>
+            <hr>
+            <p class="required"><strong>* Obrigatório</strong></p>
+
+            <fieldset>
+                <div class="input-container grid-item1">
+                    <label for="firstname-input">Nome</label>
+                    <input type="text" name="firstname-input" id="firstname-input" placeholder="Joãozinho" autocapitalize="sentences" max-lenght=" 50" required>
+                </div>
+
+                <div class="input-container grid-item2">
+                    <label for="lastname-input">Sobrenome</label>
+                    <input type="text" name="lastname-input" id="lastname-input" placeholder="Da Silva">
+                </div>
+
+                <div class="input-container grid-item4">
+                    <label for="cpf-input">CPF</label>
+                    <input type="text" name="cpf-input" id="cpf-input" placeholder="CPF*" required> <!-- Somente números!! -->
+                </div>
+
+                <div class="input-container grid-item5">
+                    <label for="rg-input">RG</label>
+                    <input type="text" name="rg-input" id="rg-input" placeholder="RG*" required>
+                </div>
+                
+                <div class="input-container grid-item6">
+                    <label for="cnpj-input">CNPJ</label>
+                    <input type="text" name="cnpj-input" id="cnpj-input" placeholder="CNPJ">
+                </div>
+
+                <div class="input-container grid-item7">
+                    <label for="razao-input">Razão Social</label>
+                    <input type="text" name="razao-input" id="razao-input" placeholder="Razão Social">
+                </div>
+
+                <div class="input-container grid-item8">
+                    <label for="nomefantasia-input">Nome Fantasia</label>
+                    <input type="text" name="nomefantasia-input" id="nomefantasia-input" placeholder="Nome Fantasia">
+                </div>
+
+                <div class="input-container grid-item9">
+                    <label for="email-input">E-mail</label>
+                    <input type="email" name="email-input" id="email-input" placeholder="E-mail*" required>
+                </div>
+
+                <div class="input-container grid-item10">
+                    <label for="contato1-input">Contato</label>
+                    <input type="text" name="contato1-input" id="contato1-input" placeholder="(xx) xxxxx-xxxx*" required>
+                </div>
+
+                <div class="input-container grid-item11">
+                    <label for="contato1tel-input">Telefone</label>
+                    <input type="tel" name="contato1tel-input" id="contato1tel-input" placeholder="Telefone Fixo">
+                </div>
+
+                <div class="input-container grid-item12">
+                    <label for="contato2-input">Contato</label>
+                    <input type="text" name="contato2-input" id="contato2-input" placeholder="Celular para Recado" required>
+                </div>
+
+                <!-- <div class="input-container">
+                    <label for="contato2tel-input">Telefone</label>
+                    <input type="tel" name="contato2tel-input" id="contato2tel-input" placeholder="" required>
+                </div> -->
+
+            </fieldset>
+
+            <h2 class="title">Endereço</h2>
+            <hr>
+            <fieldset>
+                <div class="input-container grid-cep">
+                    <label for="cep-input">CEP</label>
+                    <input type="text" name="cep-input" id="cep-input" placeholder="CEP*" required>
+                </div>
+
+                <div class="input-container grid-estado">
+                    <label for="uf-input">UF</label>
+                    <input type="text" name="uf-input" id="uf-input" placeholder="Estado*" required>
+                </div>
+
+                <div class="input-container grid-cidade">
+                    <label for="cidade-input">Cidade</label>
+                    <input type="text" name="cidade-input" id="cidade-input" placeholder="Cidade*" required>
+                </div>
+
+                <div class="input-container grid-end">
+                    <label for="end-input">Endereço</label>
+                    <input type="text" name="end-input" id="end-input" placeholder="Rua*" required>
+                </div>
+
+                <div class="input-container grid-num">
+                    <label for="no-input">Número</label>
+                    <input type="text" name="no-input" id="no-input" placeholder="Número*" required>
+                </div>
+
+                <div class="input-container grid-bairro">
+                    <label for="bairro-input">Bairro</label>
+                    <input type="text" name="bairro-input" id="bairro-input" placeholder="Bairro*" required>
+                </div>
+
+                <div class="input-container grid-comp">
+                    <label for="comp.-input">Complemento</label>
+                    <input type="text" name="comp.-input" id="comp.-input" placeholder="Complemento" >
+                </div>
+
+                <div class="input-container grid-ref">
+                    <label for="ref-input">Referência</label>
+                    <input type="text" name="ref-input" id="ref-input" placeholder="Referência">
+                </div>
+
+            </fieldset>
+        </form>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

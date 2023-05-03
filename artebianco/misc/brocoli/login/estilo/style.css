@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+mc-only {
+  display: none;
+}
+
+body {
+    height: 100vh;
+    background: url('../imagens/fundo.jpg') center center fixed no-repeat;
+    background-size: cover;
+    min-width: 280px;
+    display: grid;
+    place-items: center;
+}
+
+div.div-brocoli {
+    display: flex;
+    position: absolute;
+    background-color: #23B574;
+    box-shadow: -10px 0px 1px rgba(31, 95, 31, 0.192) inset;
+    width: 160px;
+    height: 160px;
+    top: -21%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+div.div-brocoli:after {
+    content:'';
+    position: absolute;
+    box-shadow: 5px 0px 1px rgba(77, 95, 68, 0.514);
+    width: 160px;
+    height: 160px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    transition: .3s;
+}
+
+img {
+    width: 80%;
+    height: 80%;
+}
+
+.mc-only {
+    display: none;
+}
+
+/* Section: container-a: onde vai ficar o form */
+section#container-a {
+  background: radial-gradient(circle at 175px -2px, rgba(0, 0, 0, 0) 89px, rgba(255, 255, 255, 0.466) 90px);
+  display: block;
+  position: relative;
+  width: 350px;
+  height: 400px;
+  margin: 150px 0 100px 0;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.514);
+  border-radius: 20px;
+  transition: border-radius .5s;
+}
+
+fieldset {
+  display: block;
+  padding-top: 130px;
+  border: none;
+}
+
+div.email-div,
+div.password-div {
+  display: flex;
+  background-color: white;
+  border: 1px solid rgba(0, 78, 10, 0.596);
+  box-shadow: 2px 2px 1px rgba(63, 70, 60, 0.568);
+  border-radius: 20px;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 80%;
+  height: 40px;
+  align-items: center;
+  overflow: hidden;
+}
+
+div.div-ico {
+    display: flex;
+    margin-left: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.466);
+    border-width: 1px 1px 1px 0;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+input#input-password, input#input-email {
+    width: calc(100% - 32px);
+    border: none;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 1em;
+    outline: none;
+}
+
+#a-forgot {
+    font-size: 0.9em;
+    display: inline-block;
+    color: black;
+}
+
+#label-remember {
+    font-size: 0.9em;
+}
+
+#label-remember:hover, #a-forgot:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+.flex-senha {
+    display: flex;
+    padding: 0 30px;
+    min-width: 250px;
+}
+
+div.div-remember {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+}
+
+input[type=submit] {
+    font-weight: bold;
+    display: block;
+    background-color: #e1e1e1;
+    margin: 30px auto;
+    border-radius: 40px;
+    border: none;
+    /* border: 1px solid rgba(0, 0, 0, 0.425); */
+    height: 40px;
+    width: 150px;
+    letter-spacing: 2px;
+    font-size: .7em;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+input[type=submit]:hover {
+    transition: .5s;
+    background-color: white;
+}
+
+input::-webkit-input-placeholder {
+    letter-spacing: 2px;
+    padding-left: 21%;
+    font-size: .7em;
+}
+
+input:-ms-input-placeholder {
+    letter-spacing: 2px;
+    padding-left: 21%;
+    font-size: .7em;
+}
+
+input:-moz-placeholder {
+    letter-spacing: 2px;
+    padding-left: 21%;
+    font-size: .7em;
+}
+
+input::-moz-placeholder {
+    letter-spacing: 2px;
+    padding-left: 21%;
+    font-size: .7em;
+}
+
+span.material-icons {
+    font-size: 1.4em;
+}
+
+

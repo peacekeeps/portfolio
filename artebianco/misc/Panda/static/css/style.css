@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+/*
+===============
+Fonts
+===============
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+/*
+===============
+Variables
+===============
+*/
+
+:root {
+  /* primary colors */
+  --clr-primary-1: hsl(207, 27%, 16%);
+  --clr-primary-2: hsl(209, 41%, 25%);
+  --clr-primary-3: hsl(208, 37%, 46%);
+  --clr-primary-4: hsl(208, 80%, 75%);
+  /* secondary colors */
+  --clr-secondary-1: hsl(174, 30%, 4%);
+  --clr-secondary-2: hsl(174, 97%, 13%);
+  --clr-secondary-3: hsl(174, 97%, 23%);
+  --clr-secondary-3: hsl(174, 85%, 79%);
+  /* other colors */
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(360, 71%, 66%);
+  --clr-green-dark: hsl(125, 67%, 44%);
+  --clr-green-light: hsl(125, 71%, 66%);
+  --clr-secondary: hsla(182, 63%, 54%);
+  --clr-black: #222222;
+}
+
+/*
+===============
+Global Styles
+===============
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--clr-white);
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/*
+===============
+Classes
+===============
+*/
+
+/* ========== Nav ========== */
+
+#nav {
+    border: 1px dashed black;
+}
+
+.nav-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    height: 80px;
+    margin: auto;
+    padding: 0 20px;
+    background-color: white;
+    
+}
+
+#marca {
+    height: 40px;
+}
+
+#links {
+    display: flex;
+    flex-direction: row;
+}
+
+#links li {
+    margin: 10px;
+}
+
+#links a {
+    font-family: "Open Sans", "sans-serif";
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: rgba(0, 0, 0, 0.474);
+    transition: color .3s linear;
+}
+
+#links a:hover {
+    color: var(--clr-black);
+}
+
+/* ========== Intro ========== */
+
+#text-box {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid var(--clr-black);
+}
+
+.page-section {
+    height: 100vh;
+}

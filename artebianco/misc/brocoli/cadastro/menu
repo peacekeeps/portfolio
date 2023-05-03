@@ -1,0 +1,6 @@
+- Precisa sobrepor o fundo (z-index?)
+- Quando clicar fora, deve encolher (mouse event?)
+- Testar:
+    menu criado com display none
+    criar o menu direto com js
+- Quando aberto, o header precisar ter border-bottom para diferenciar

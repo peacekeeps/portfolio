@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="estilo/style.css" />
+    <link rel="stylesheet" href="estilo/mediaquery.css">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      
+      <section id="container-a">
+        <div class="div-brocoli">
+          <img src="imagens/user-ico.png" alt="brocoli">
+        </div>
+        <form action="cadastro.php" method="post">
+          
+          <fieldset>
+            <div class="email-div">
+              <div class="div-ico"><span class="material-icons"> account_circle </span></div>
+              <input
+                type="email"
+                name="input-email"
+                id="input-email"
+                required
+                autocomplete="email"
+                placeholder="USERNAME"
+                onclick="fadeoutplaceholder()"
+              />
+              <label for="input-email" class="mc-only">Email</label>
+            </div>
+            <div class="password-div">
+              <div class="div-ico"><span class="material-icons" id="lock">lock</span></div>
+              <input
+                type="password"
+                name="input-password"
+                id="input-password"
+                required
+                placeholder="PASSWORD"
+                autocomplete="current-password mc-only"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Sua senha deve conter 8 ou mais dígitos, sendo pelo menos uma letra minúscula, uma letra maiúscula e um numero."
+                onclick="fadeoutplaceholder()"
+              />
+              <label for="input-password" class="mc-only">Password</label>
+            </div>
+            <div class="flex-senha">
+              <a href="#" id="a-forgot">Esqueceu a senha?</a>
+              <div class="div-remember">
+                <label for="lembra-senha" id="label-remember">Lembrar-me </label
+                ><input type="checkbox" name="lembra-senha" id="lembra-senha" />
+              </div>
+            </div>
+            <input type="submit" value="LOGIN" />
+          </fieldset>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
