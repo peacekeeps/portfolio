@@ -1,0 +1,25 @@
+Primeiro, vamos ter dois scrolls: um para o array (marketing, identidade visual, vetores) e outro para imagens em si...
+
+let array = [J = [i, i, i], J = [i, i, i]]
+
+Ao rodar todas as imagens de um array, ir para o próximo array.
+
+let j = 0
+let arrayAtual = array[j]
+
+Se (arrayAtual[i] >= arrayAtual.length) {
+    j++
+    começaDenovo()
+}
+
+Ao rodar todas as imagens do último array, voltar ao primeiro
+
+Se (arrayAtual[i] >= arrayAtual.length) {
+    j++
+
+    Se (j >= array.length) {
+    j = 0
+    }
+
+    começaDenovo()
+}
