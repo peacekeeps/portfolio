@@ -89,7 +89,9 @@ ul {
 }
 
 /*
+=========================
 Cabeça
+=========================
 */
 
 .head-container {
@@ -99,6 +101,7 @@ Cabeça
     height: 50px;
     width: 100%;
     padding: .5rem 1rem;
+    z-index: 2;
 }
 
 .fixed-nav {
@@ -191,7 +194,9 @@ Cabeça
 }
 
 /*
+=========================
 Corpo
+=========================
 */
 
 .main-container {
@@ -215,10 +220,13 @@ Corpo
     max-height: 100%;
     min-height: 100vh;
     margin-bottom: 1.5rem;
+    padding: 0 1rem;
 }
 
-/* 
+/*
+=========================
 Projetos
+=========================
 */
 
 .p-nav-box {
@@ -235,16 +243,186 @@ Projetos
 }
 
 .p-image-box {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 250px;
+    overflow: hidden;
+}
+
+/* 
+=========================
+Caixas de Imagem 
+=========================
+Obs: pib é project-image-box
+*/
+.pib {
+    border-radius: 5%;
+    overflow: hidden;
 }
 
 .pib.center {
+    position: relative;
     width: 250px;
-    height: 250px;
-    
+    aspect-ratio: 1/1;
+    transition: .3s;
+    z-index: 1;
 }
+
+.pib.left {
+    position: absolute;
+    width: 150px;
+    aspect-ratio: 1/1;
+
+    transition: .3s;
+    left: 0;
+    filter: blur(1px);
+
+}
+
+.pib.right {
+    position: absolute;
+    width: 150px;
+    aspect-ratio: 1/1;
+
+    transition: .3s;
+    left: calc(100% - 150px);
+    filter: blur(1px);
+ 
+}
+
+.pib.back {
+    position: absolute;
+    width: 150px;
+    filter: blur(1px);
+    transition: .3s;
+}
+
+/*
+=========================
+Animações das Caixas
+=========================
+*/
+
+
+.pib.center-left {
+    margin-left: -100%;
+    transform: translateX(50%);
+    width: 150px;
+    filter: blur(1px);
+    z-index: 0;
+}
+
+.pib.right-center {
+    margin-left: -50%;
+    transform: translateX(10%);
+    width: 250px;
+    filter: blur(0);
+    z-index: 1;
+}
+
+.pib.left-back {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    filter: blur(1px);
+}
+
+.pib.back-right {
+    margin-left: 100%;
+    transform: translateX(-50%);
+}
+
+
+.pib.center-right {
+    margin-left: 71%;
+    width: 150px;
+    aspect-ratio: 1/1;
+    filter: blur(1px);
+
+    z-index: 0;
+}
+
+.pib.right-back {
+    margin-left: -50%;
+    transform: translateX(50%);
+    filter: blur(1px);
+}
+
+.pib.back-left {
+    margin-left: -100%;
+    transform: translateX(50%);
+}
+
+.pib.left-center {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    filter: blur(0);
+    z-index: 1;
+}
+
+
+/*
+=========================
+Botões de Next e Previous
+=========================
+*/
+
+.p-next-btn .fa-solid{
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.61);
+    transition: .3s;
+}
+
+.p-previous-btn .fa-solid {
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.61);
+}
+
+.p-next-btn {
+    display: grid;
+    position: absolute;
+    left: calc(100% - 24px);
+    height: 100%;
+    place-items: center;
+    border-radius: 0 10px 10px 0;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.p-previous-btn {
+    display: grid;
+    position: absolute;
+    height: 100%;
+    padding: 2px;
+    place-items: center;
+    border-radius: 10px 0 0 10px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.p-next-btn:hover {
+    background: rgba(255, 255, 255, 0.301);
+}
+
+.p-previous-btn:hover {
+    background: rgba(255, 255, 255, 0.61);
+}
+
+.p-next-btn:hover .fa-solid {
+    color: white;
+}
+
+.p-previous-btn:hover .fa-solid {
+    color: white;
+}
+
+/*
+=========================
+Imagem
+=========================
+*/
 
 .pib-img {
     width: 100%;
@@ -252,8 +430,10 @@ Projetos
     border-radius: 5%;
 }
 
-/* 
+/*
+=========================
 Habilidades
+=========================
 */
 
 .skill-container, .skill-box {
