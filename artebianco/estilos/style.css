@@ -258,8 +258,16 @@ Caixas de Imagem
 Obs: pib é project-image-box
 */
 .pib {
+    display: flex;
     border-radius: 5%;
     overflow: hidden;
+}
+
+.pib img {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .pib.center {

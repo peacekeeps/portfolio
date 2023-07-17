@@ -163,12 +163,13 @@ Image Slider
 ============================
 */
 
-let projectCategories = {
+let pibObj = {
   "Marketing e Propaganda": [
     "imagens/marketing001-md.jpeg",
     "imagens/marketing002-md.jpeg",
     "imagens/marketing003-md.jpeg",
   ],
+  Teste: ["imagens/vetor001-md.jpeg"],
   "Marketing Offline": [
     "imagens/offline001-md.jpeg",
     "imagens/offline002-md.jpeg",
@@ -185,86 +186,146 @@ let projectCategories = {
     "imagens/vetor004-md.jpeg",
   ],
 };
-const marketing = [
-  "imagens/marketing001-md.jpeg",
-  "imagens/marketing002-md.jpeg",
-  "imagens/marketing003-md.jpeg",
-  "imagens/offline001-md.jpeg",
-  "imagens/offline002-md.jpeg"
-];
+
 const pibs = document.querySelectorAll(".pib");
+let pibIndex = 0; //Para iterar o array de imagens
+let firstClick = true;
+let pibCounter = 0; //Para iterar o objeto
 
-let pibImage = 0
+function pibGenerator(pib, obj) {
+  let pibImage = pibIndex;
+  let keys = Object.keys(obj);
+  let images = obj[keys[pibCounter]];
 
-function pibGenerator(pib, arr) {
-
-  for (let i = 1; i < pib.length; i++) {
-    if(i === 1) {
-      pib[i].innerHTML = `
-      <div class="p-next-btn">
-      <i class="fa-solid fa-caret-right"></i>
-      </div>
-     <img
-      src=${arr[pibImage]}
-      alt="marketing"
-      class="pib-img"
-      />
-    `
-    } else {
-      pib[i].innerHTML = `
-      <img
-      src=${arr[pibImage]}
-      alt="marketing"
-      class="pib-img"
-      />
-    `
-    }
-    pibImage ++
-  }
-  pibImage = 0
-  let pNextBtn = document.querySelector(".p-next-btn")
-  pNextBtn.addEventListener("click", function(e) {
+  if (firstClick) {
     for (let i = 0; i < pib.length; i++) {
-      if(i === 1) {
-        pib[i].innerHTML = `
-        <div class="p-next-btn">
-        <i class="fa-solid fa-caret-right"></i>
-        </div>
-        <div class="p-previous-btn">
-        <i class="fa-solid fa-caret-left"></i>
-      </div>
-       <img
-        src=${arr[pibImage]}
-        alt="marketing"
-        class="pib-img"
-        />
-      `
+      // i = 1 é para começar do pib central
+      if (i === 0) {
+        pib[i].innerHTML = ``;
       } else {
-        pib[i].innerHTML = `
+        if (images[pibImage] !== undefined) {
+          pib[i].innerHTML = `      
+          <img
+          src=${images[pibImage]}
+          alt="marketing"
+          class="pib-img"
+          />
+          `;
+          if (i === 1) {
+            if (pibCounter === 0) {
+              pib[i].innerHTML += `
+              <div class="p-next-btn pib-btn">
+              <i class="fa-solid fa-caret-right"></i>
+              </div>
+              `;
+            } else {
+              pib[i].innerHTML += `
+                  <div class="p-next-btn pib-btn">
+                  <i class="fa-solid fa-caret-right"></i>
+                  </div>
+                  <div class="p-previous-btn pib-btn">
+                  <i class="fa-solid fa-caret-left"></i>
+                  </div>
+                  `;
+            }
+          }
+        } else {
+          pib[i].innerHTML = ``;
+        }
+        //   pib[0].innerHTML = ``;
+        pibImage++;
+      }
+    }
+  } else {
+    for (let i = 0; i < pib.length; i++) {
+      // i = 0 é para começar do pib esquerdo
+      if (images[pibImage] !== undefined) {
+        if (pibIndex === images.length - 2 && i >= 2) {
+          pib[i].innerHTML = ``;
+        } else {
+          pib[i].innerHTML = `      
         <img
-        src=${arr[pibImage]}
+        src=${images[pibImage]}
         alt="marketing"
         class="pib-img"
         />
-      `
+        `;
+          if (i === 1) {
+            pib[i].innerHTML += `
+          <div class="p-next-btn pib-btn">
+          <i class="fa-solid fa-caret-right"></i>
+          </div>
+          <div class="p-previous-btn pib-btn">
+          <i class="fa-solid fa-caret-left"></i>
+          </div>
+          `;
+          }
+        }
+      } else {
+        pib[i].innerHTML = ``;
       }
-      pibImage ++
+      pibImage++;
     }
-    if (pibImage >= arr.length)
-  })
+  }
+  const previousBtn = document.querySelector(".p-previous-btn");
+  const nextBtn = document.querySelector(".p-next-btn");
+  const btns = document.querySelectorAll(".pib-btn");
+
+  btns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      if (e.currentTarget === nextBtn) {
+        if (pibIndex === images.length - 1 && firstClick) {
+          //Para arrays com uma imagem
+          pibIndex = 0;
+
+          if (pibCounter < keys.length) {
+            pibCounter++;
+          } else {
+            pibCounter = 0
+          }
+          
+          firstClick = true;
+        } else if (pibIndex === images.length - 2 && !firstClick) {
+          //Para arrays com duas imagens
+          pibIndex = 0;
+
+          if (pibCounter < keys.length) {
+            pibCounter++;
+          } else {
+            pibCounter = 0
+          }
+          
+          firstClick = true;
+        } else if (firstClick) {
+          //Quando for a primeira imagem do array
+          firstClick = false;
+        } else {
+          pibIndex++;
+        }
+      } else {
+        if (pibIndex === 0) {
+          if (firstClick === true) {
+            pibCounter--;
+            let myVar = obj[keys[pibCounter]].length;
+            if (myVar < 2) {
+              //Se ao retornar pro array anterior, e esse só tiver um item
+              pibIndex = myVar - 1;
+              firstClick = true;
+            } else {
+              pibIndex = myVar - 2;
+              firstClick = false;
+            }
+          } else {
+            firstClick = true;
+          }
+        } else {
+          pibIndex--;
+        }
+      }
+      // }
+      pibGenerator(pibs, pibObj);
+    });
+  });
 }
 
-pibGenerator(pibs, marketing);
-
-/*
-            <div class="p-next-btn">
-              <i class="fa-solid fa-caret-right"></i>
-            </div>
-            <div class="p-previous-btn">
-              <i class="fa-solid fa-caret-left"></i>
-            </div>
-            <img
-              src="imagens/marketing001-md.jpeg"
-              alt="marketing"
-              class="pib-img"
-*/
+pibGenerator(pibs, pibObj);

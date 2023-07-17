@@ -23,3 +23,96 @@ Se (arrayAtual[i] >= arrayAtual.length) {
 
     começaDenovo()
 }
+________________________________________
+const marketing = [
+  "imagens/marketing001-md.jpeg",
+  "imagens/marketing002-md.jpeg",
+  "imagens/marketing003-md.jpeg",
+  "imagens/offline001-md.jpeg",
+  "imagens/offline002-md.jpeg",
+];
+const pibs = document.querySelectorAll(".pib");
+let pibIndex = 0;
+let firstClick = true;
+
+function pibGenerator(pib, arr) {
+  let pibImage = pibIndex;
+
+  if (firstClick) {
+    for (let i = 1; i < pib.length; i++) {
+      // i = 1 é para começar do pib central
+      pib[0].innerHTML = ``;
+      pib[i].innerHTML = `      
+      <img
+      src=${arr[pibImage]}
+      alt="marketing"
+      class="pib-img"
+      />
+      `;
+      if (i === 1) {
+        pib[i].innerHTML += `
+        <div class="p-next-btn pib-btn">
+        <i class="fa-solid fa-caret-right"></i>
+        </div>
+        `;
+      }
+      pibImage++;
+    }
+  } else {
+    for (let i = 0; i < pib.length; i++) {
+      // i = 0 é para começar do pib esquerdo
+      if (pibIndex === marketing.length - 2 && i >= 2) {
+        pib[i].innerHTML = ``;
+      } else {
+        pib[i].innerHTML = `      
+      <img
+      src=${arr[pibImage]}
+      alt="marketing"
+      class="pib-img"
+      />
+      `;
+        if (i === 1) {
+          pib[i].innerHTML += `
+        <div class="p-next-btn pib-btn">
+        <i class="fa-solid fa-caret-right"></i>
+        </div>
+        <div class="p-previous-btn pib-btn">
+        <i class="fa-solid fa-caret-left"></i>
+        </div>
+        `;
+        }
+      }
+      pibImage++;
+    }
+  }
+  const previousBtn = document.querySelector(".p-previous-btn");
+  const nextBtn = document.querySelector(".p-next-btn");
+  const btns = document.querySelectorAll(".pib-btn");
+
+  btns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      if (firstClick === true) {
+        firstClick = false;
+      } else {
+        if (e.currentTarget === nextBtn) {
+          if (pibIndex === marketing.length - 2) {
+            console.log("last iamge");
+            pibIndex = 0;
+            firstClick = true;
+          } else {
+            pibIndex++;
+          }
+        } else {
+          if (pibIndex === 0) {
+            firstClick = true;
+          } else {
+            pibIndex--;
+          }
+        }
+      }
+      pibGenerator(pibs, marketing);
+    });
+  });
+}
+
+pibGenerator(pibs, marketing);
