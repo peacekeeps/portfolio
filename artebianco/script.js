@@ -169,11 +169,6 @@ let pibObj = {
     "imagens/marketing002-md.jpeg",
     "imagens/marketing003-md.jpeg",
   ],
-  Teste: ["imagens/vetor001-md.jpeg"],
-  "Marketing Offline": [
-    "imagens/offline001-md.jpeg",
-    "imagens/offline002-md.jpeg",
-  ],
   "Identidade Visual": [
     "imagens/id001-md.jpeg",
     "imagens/id002-md.jpeg",
@@ -188,6 +183,7 @@ let pibObj = {
 };
 
 const pibs = document.querySelectorAll(".pib");
+const pNavItem = document.querySelector(".p-nav-item")
 let pibIndex = 0; //Para iterar o array de imagens
 let firstClick = true;
 let pibCounter = 0; //Para iterar o objeto
@@ -196,6 +192,10 @@ function pibGenerator(pib, obj) {
   let pibImage = pibIndex;
   let keys = Object.keys(obj);
   let images = obj[keys[pibCounter]];
+  
+  if (pNavItem.textContent !== keys[pibCounter]) {
+    pNavItem.textContent = keys[pibCounter]
+  }
 
   if (firstClick) {
     for (let i = 0; i < pib.length; i++) {
@@ -274,14 +274,17 @@ function pibGenerator(pib, obj) {
   btns.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
       if (e.currentTarget === nextBtn) {
+        console.log(`Pibcounter = ${pibCounter}; ${keys.length}`)
         if (pibIndex === images.length - 1 && firstClick) {
           //Para arrays com uma imagem
           pibIndex = 0;
 
-          if (pibCounter < keys.length) {
-            pibCounter++;
-          } else {
+          if (pibCounter === keys.length - 1) {
             pibCounter = 0
+            pibIndex = 0
+            firstClick = true
+          } else {
+            pibCounter++;
           }
           
           firstClick = true;
@@ -289,10 +292,12 @@ function pibGenerator(pib, obj) {
           //Para arrays com duas imagens
           pibIndex = 0;
 
-          if (pibCounter < keys.length) {
-            pibCounter++;
-          } else {
+          if (pibCounter === keys.length - 1) {
             pibCounter = 0
+            pibIndex = 0
+            firstClick = true
+          } else {
+            pibCounter++;
           }
           
           firstClick = true;
