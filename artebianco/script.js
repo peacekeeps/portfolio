@@ -182,28 +182,28 @@ let pibObj = {
   ],
 };
 
-const pibs = document.querySelectorAll(".pib");
-const pNavItem = document.querySelector(".p-nav-item")
-let pibIndex = 0; //Para iterar o array de imagens
-let firstClick = true;
-let pibCounter = 0; //Para iterar o objeto
+const pibs = document.querySelectorAll(".pib"); //As caixas de imagem
+const pNavItem = document.querySelector(".p-nav-item") //É a categoria das imagens, ou a propriedade sendo iterada
+let pibIndex = 0; //Para iterar o array de imagens da propriedade do objeto
+let firstClick = true; //Para quando a imagem for a primeira do array de images
+let pibCounter = 0; //Para iterar entre as propriedades do objeto
 
 function pibGenerator(pib, obj) {
-  let pibImage = pibIndex;
-  let keys = Object.keys(obj);
-  let images = obj[keys[pibCounter]];
+  let pibImage = pibIndex; 
+  let keys = Object.keys(obj); //Cria um array com as propriedades do objeto, EX. Marketing, Arte vetorizada, etc
+  let images = obj[keys[pibCounter]]; //Cria um array com as imagens (ou valores) dentro da propriedade
   
   if (pNavItem.textContent !== keys[pibCounter]) {
-    pNavItem.textContent = keys[pibCounter]
+    pNavItem.textContent = keys[pibCounter] //Se a categoria exibida não for a categoria sendo iterada, ele atualiza
   }
 
   if (firstClick) {
     for (let i = 0; i < pib.length; i++) {
-      // i = 1 é para começar do pib central
-      if (i === 0) {
+      
+      if (i === 0) { // o pib da esquerda fica invisível nessa primeira amostragem
         pib[i].innerHTML = ``;
-      } else {
-        if (images[pibImage] !== undefined) {
+      } else { // do pib 1 pra frente
+        if (images[pibImage] !== undefined) { // se ainda houverem imagens no array de imagens
           pib[i].innerHTML = `      
           <img
           src=${images[pibImage]}
@@ -211,14 +211,14 @@ function pibGenerator(pib, obj) {
           class="pib-img"
           />
           `;
-          if (i === 1) {
-            if (pibCounter === 0) {
+          if (i === 1) { // Se for a pib do centro
+            if (pibCounter === 0) { // E estiver no primeiro array de imagens ou categoria
               pib[i].innerHTML += `
               <div class="p-next-btn pib-btn">
               <i class="fa-solid fa-caret-right"></i>
               </div>
-              `;
-            } else {
+              `; // adiciona somente o botão de next
+            } else { // Se já não for a primeira categoria
               pib[i].innerHTML += `
                   <div class="p-next-btn pib-btn">
                   <i class="fa-solid fa-caret-right"></i>
@@ -226,17 +226,17 @@ function pibGenerator(pib, obj) {
                   <div class="p-previous-btn pib-btn">
                   <i class="fa-solid fa-caret-left"></i>
                   </div>
-                  `;
+                  `; // adiciona os dois botões
             }
           }
-        } else {
+        } else { // Se não houverem mais imagens para preencher os pibs
           pib[i].innerHTML = ``;
         }
         //   pib[0].innerHTML = ``;
-        pibImage++;
+        pibImage++; // Começa denovo da próxima imagem
       }
     }
-  } else {
+  } else { // Se não for a primeira imagem do array
     for (let i = 0; i < pib.length; i++) {
       // i = 0 é para começar do pib esquerdo
       if (images[pibImage] !== undefined) {

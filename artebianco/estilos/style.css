@@ -229,17 +229,25 @@ Projetos
 =========================
 */
 
+.fade-line {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(to right, transparent 10%, white, transparent 90%);
+    border: none;
+}
+
 .p-nav-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
-    border: 1px solid black;
+    margin: 0 1rem;
 }
 
 .p-nav-item {
+    font-family: var(--subtitle);
+    font-size: 1.3rem;
     padding: .5rem;
-    border: 1px solid black;
+    transition: .3s;
 }
 
 .p-image-box {
@@ -249,6 +257,7 @@ Projetos
     align-items: center;
     height: 250px;
     overflow: hidden;
+    margin: 1rem;
 }
 
 /* 
@@ -459,7 +468,12 @@ Habilidades
     gap: 1.5rem;
 }
 .skill-box {
-    align-self: flex-start;
+    width: 100%;
+    padding: .5rem;
+    border: 2px solid rgba(0, 0, 0, 0.425);
+    border-radius: 10px;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.281);
 }
 
 .skill-box h3 {
