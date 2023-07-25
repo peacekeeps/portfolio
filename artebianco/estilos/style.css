@@ -55,11 +55,14 @@ body {
     background-repeat: no-repeat;
     background-position-x: right;
     background-position-y: center;
-
 }
 
 main {
     max-width: 800px;
+}
+
+section {
+    min-height: 100vh; /* é necessário para o scroll entre sections funcionar direito, a main-container precisa de altura própria (135px) */
 }
 
 /* body::-webkit-scrollbar{
@@ -199,9 +202,57 @@ Corpo
 =========================
 */
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* fallback */
+    background-color: rgba(0, 0, 0, 0.6);
+
+}
+
+.showModal {
+    display: grid;
+}
+
+.modal .modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.modal img {
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.modal img {
+    animation-name: zoom;
+    animation-duration: .6s;
+}
+
+@media only screen and (max-width: 500px) {
+    .modal img {
+        width: 100%;
+    }
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
 .main-container {
     display: flex;
     height: calc(100vh - 50px);
+    min-height: 135px; /* Para ele não desaparecer atrás do header */
     align-items: center;
     overflow: hidden;
 }
@@ -216,9 +267,13 @@ Corpo
     animation: .5s 1 slideright;
 }
 
+h3#destaque {
+    font-size: 1.30rem;
+    text-shadow: -1px 1px 3px rgb(0 0 0);
+}
+
 .section {
     max-height: 100%;
-    min-height: 100vh;
     margin-bottom: 1.5rem;
     padding: 0 1rem;
 }
@@ -466,7 +521,67 @@ Habilidades
 .skill-container {
     padding: 1rem;
     gap: 1.5rem;
+    height: 500px;
 }
+
+.skill-line {
+    width: 4px;
+    height: 100%;
+    border-radius: 10px;
+
+    box-shadow:inset -1px -1px 4px 0px rgba(0, 102, 133, 0.664);
+    border: .1px solid rgba(0, 0, 0, 0.301);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.dot-a {
+    position: absolute;
+    /* transform: translateX(calc(-50%)); */
+    top: 100px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow:inset -1px -1px 4px 0px rgba(0, 102, 133, 0.664);
+    border: .1px solid rgba(0, 0, 0, 0.301);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.dot-b {
+    position: absolute;
+    /* transform: translateX(calc(-50% + 2px)); */
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: inset -3px -2px 4px 0px rgb(0, 102, 133);
+    border: 0.1px solid rgb(0 132 147 / 94%);
+    background-color: rgb(255, 255, 255);
+}
+
+.dot-b:before {
+    content: "";
+    position: absolute;
+    transform: translateY(100%);
+    left: 10px;
+    width: 100px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.432);
+    border-radius: 10%;
+}
+
+.dot-c {
+    position: absolute;
+    top: 100px;
+    /* transform: translateX(calc(-50% + 2px)); */
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow:inset -1px -1px 4px 0px rgba(0, 102, 133, 0.664);
+    border: .1px solid rgba(0, 0, 0, 0.301);
+    background-color: rgba(255, 255, 255, 0);
+}
+
 .skill-box {
     width: 100%;
     padding: .5rem;

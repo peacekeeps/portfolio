@@ -1,0 +1,5 @@
+O site deve carregar com animação fade-in a medida que desço a página
+
+A formação vai ser composta por:
+    - 1 linha vertical no centro
+    - blocos de texto que vão surgindo em sequência, de ambos os lados (gridLayout)

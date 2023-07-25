@@ -41,7 +41,10 @@ titleImg.addEventListener("error", function () {
 window.addEventListener("scroll", () => {
   let windowY = window.pageYOffset;
 
-  if (windowY > headContainerY) {
+  if (
+    windowY > headContainerY &&
+    !dropdownMenu.classList.contains("show-menu")
+  ) {
     headContainer.classList.add("fixed-nav");
   } else {
     headContainer.classList.remove("fixed-nav");
@@ -53,6 +56,12 @@ menuBtn.addEventListener("click", () => {
   main.classList.toggle("hidden");
 
   dropdownMenu.classList.toggle("show-menu");
+
+  if (dropdownMenu.classList.contains("show-menu")) {
+    window.scrollTo({
+      top: 0,
+    });
+  }
 });
 
 links.forEach((link) => {
@@ -183,42 +192,63 @@ let pibObj = {
 };
 
 const pibs = document.querySelectorAll(".pib"); //As caixas de imagem
-const pNavItem = document.querySelector(".p-nav-item") //É a categoria das imagens, ou a propriedade sendo iterada
+const pNavItem = document.querySelector(".p-nav-item"); //É a categoria das imagens, ou a propriedade sendo iterada
 let pibIndex = 0; //Para iterar o array de imagens da propriedade do objeto
 let firstClick = true; //Para quando a imagem for a primeira do array de images
 let pibCounter = 0; //Para iterar entre as propriedades do objeto
 
+/*
+============================
+PopUp de Imagens
+*/
+
+const pibCenter = document.querySelectorAll(".pib.center");
+let pibImgBox = undefined; //Esse vai ser atualizado onDemand, pela função pibGenerator
+const modal = document.querySelector(".modal");
+const pibHolder = document.getElementsByClassName(".pib .center"); //Esse é só para selecionar o elemento pibCenter, porque ele tem duas classes
+
+/*
+============================
+*/
+
 function pibGenerator(pib, obj) {
-  let pibImage = pibIndex; 
+  let pibImage = pibIndex;
   let keys = Object.keys(obj); //Cria um array com as propriedades do objeto, EX. Marketing, Arte vetorizada, etc
   let images = obj[keys[pibCounter]]; //Cria um array com as imagens (ou valores) dentro da propriedade
-  
+
   if (pNavItem.textContent !== keys[pibCounter]) {
-    pNavItem.textContent = keys[pibCounter] //Se a categoria exibida não for a categoria sendo iterada, ele atualiza
+    pNavItem.textContent = keys[pibCounter]; //Se a categoria exibida não for a categoria sendo iterada, ele atualiza
   }
 
   if (firstClick) {
     for (let i = 0; i < pib.length; i++) {
-      
-      if (i === 0) { // o pib da esquerda fica invisível nessa primeira amostragem
+      if (i === 0) {
+        // o pib da esquerda fica invisível nessa primeira amostragem
         pib[i].innerHTML = ``;
-      } else { // do pib 1 pra frente
-        if (images[pibImage] !== undefined) { // se ainda houverem imagens no array de imagens
-          pib[i].innerHTML = `      
+      } else {
+        // do pib 1 pra frente
+        if (images[pibImage] !== undefined) {
+          // se ainda houverem imagens no array de imagens
+          pib[i].innerHTML = `
+          <div class="img-box">      
           <img
           src=${images[pibImage]}
           alt="marketing"
           class="pib-img"
           />
+          </div>
           `;
-          if (i === 1) { // Se for a pib do centro
-            if (pibCounter === 0) { // E estiver no primeiro array de imagens ou categoria
+          if (i === 1) {
+            // Se for a pib do centro
+            if (pibCounter === 0) {
+              // E estiver no primeiro array de imagens ou categoria
               pib[i].innerHTML += `
               <div class="p-next-btn pib-btn">
               <i class="fa-solid fa-caret-right"></i>
               </div>
               `; // adiciona somente o botão de next
-            } else { // Se já não for a primeira categoria
+            } else {
+              // Se já não for a primeira categoria
               pib[i].innerHTML += `
                   <div class="p-next-btn pib-btn">
                   <i class="fa-solid fa-caret-right"></i>
@@ -229,26 +259,29 @@ function pibGenerator(pib, obj) {
                   `; // adiciona os dois botões
             }
           }
-        } else { // Se não houverem mais imagens para preencher os pibs
+        } else {
+          // Se não houverem mais imagens para preencher os pibs
           pib[i].innerHTML = ``;
         }
-        //   pib[0].innerHTML = ``;
         pibImage++; // Começa denovo da próxima imagem
       }
     }
-  } else { // Se não for a primeira imagem do array
+  } else {
+    // Se não for a primeira imagem do array
     for (let i = 0; i < pib.length; i++) {
       // i = 0 é para começar do pib esquerdo
       if (images[pibImage] !== undefined) {
         if (pibIndex === images.length - 2 && i >= 2) {
           pib[i].innerHTML = ``;
         } else {
-          pib[i].innerHTML = `      
+          pib[i].innerHTML = `
+        <div class="img-box">      
         <img
         src=${images[pibImage]}
         alt="marketing"
         class="pib-img"
         />
+        </div>
         `;
           if (i === 1) {
             pib[i].innerHTML += `
@@ -267,6 +300,9 @@ function pibGenerator(pib, obj) {
       pibImage++;
     }
   }
+
+  pibImgBox = pibCenter[0].querySelector(".img-box"); //Após gerar a imagem e atualizar as PIBs, pibImgBox é atualizado com o novo valor da PIB central.
+
   const previousBtn = document.querySelector(".p-previous-btn");
   const nextBtn = document.querySelector(".p-next-btn");
   const btns = document.querySelectorAll(".pib-btn");
@@ -274,32 +310,32 @@ function pibGenerator(pib, obj) {
   btns.forEach(function (btn) {
     btn.addEventListener("click", function (e) {
       if (e.currentTarget === nextBtn) {
-        console.log(`Pibcounter = ${pibCounter}; ${keys.length}`)
+        console.log(`Pibcounter = ${pibCounter}; ${keys.length}`);
         if (pibIndex === images.length - 1 && firstClick) {
           //Para arrays com uma imagem
           pibIndex = 0;
 
           if (pibCounter === keys.length - 1) {
-            pibCounter = 0
-            pibIndex = 0
-            firstClick = true
+            pibCounter = 0;
+            pibIndex = 0;
+            firstClick = true;
           } else {
             pibCounter++;
           }
-          
+
           firstClick = true;
         } else if (pibIndex === images.length - 2 && !firstClick) {
           //Para arrays com duas imagens
           pibIndex = 0;
 
           if (pibCounter === keys.length - 1) {
-            pibCounter = 0
-            pibIndex = 0
-            firstClick = true
+            pibCounter = 0;
+            pibIndex = 0;
+            firstClick = true;
           } else {
             pibCounter++;
           }
-          
+
           firstClick = true;
         } else if (firstClick) {
           //Quando for a primeira imagem do array
@@ -327,8 +363,30 @@ function pibGenerator(pib, obj) {
           pibIndex--;
         }
       }
+
       // }
       pibGenerator(pibs, pibObj);
+    });
+  });
+
+  //O eventListener de popup aparece por último, porque ele precisa de todas as informações atualizadas
+  pibImgBox.addEventListener("click", function () {
+    let pibImg = pibCenter[0] //O index 0 é por causa da forma como eu capturei o elemento pibCenter, porque ele é um Node
+      .getElementsByTagName("img")[0] //Pega a tag de imagem de dentro do elemento
+      .getAttribute("src"); //Pega só o src da <img>
+    modal.innerHTML = `
+    <i class="fa-solid fa-xmark modal-close-btn"></i>
+    <img
+      src=${pibImg}
+      alt="Imagem falhou em ser carregada"
+    />
+    `;
+    modal.classList.add("showModal");
+
+    const modalCloseBtn = document.querySelector(".modal-close-btn"); //Eu capturo o botão depois de cria-lo
+
+    modalCloseBtn.addEventListener("click", function () {
+      modal.classList.remove("showModal");
     });
   });
 }
