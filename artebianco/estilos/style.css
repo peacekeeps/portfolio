@@ -37,6 +37,7 @@
     padding: 0;
     box-sizing: border-box;
     animation: .5s 1 normal fadein;
+    scroll-behavior: smooth;
 }
 
 html {
@@ -132,7 +133,7 @@ Cabeça
     transition: .3s;
 }
 
-.menu-btn:hover {
+.menu-btn.active {
     color: white;
     transform: rotate(90deg);
 }
@@ -157,10 +158,6 @@ Cabeça
     letter-spacing: .3rem;
     padding: .5rem 0 .5rem 1rem;
     transition: all .3s;
-}
-
-.dropdown-menu li:hover a {
-    color: var(--primary-clr-4);
 }
 
 .dropdown-menu a {
@@ -474,22 +471,6 @@ Botões de Next e Previous
     cursor: pointer;
 }
 
-.p-next-btn:hover {
-    background: rgba(255, 255, 255, 0.301);
-}
-
-.p-previous-btn:hover {
-    background: rgba(255, 255, 255, 0.61);
-}
-
-.p-next-btn:hover .fa-solid {
-    color: white;
-}
-
-.p-previous-btn:hover .fa-solid {
-    color: white;
-}
-
 /*
 =========================
 Imagem
@@ -662,7 +643,37 @@ Habilidades
 }
 
 @media  (max-width: 300px) {
+  /*
+=========================
+Cabeça
+=========================
+*/
+  
+    .dropdown-menu li:hover a {
+        color: var(--primary-clr-4);
+    }
 
+    /*
+=========================
+Botões de Next e Previous
+=========================
+*/
+
+    .p-next-btn:hover {
+        background: rgba(255, 255, 255, 0.301);
+    }
+    
+    .p-previous-btn:hover {
+        background: rgba(255, 255, 255, 0.61);
+    }
+    
+    .p-next-btn:hover .fa-solid {
+        color: white;
+    }
+    
+    .p-previous-btn:hover .fa-solid {
+        color: white;
+    }
 }
 
 .show-menu {

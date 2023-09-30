@@ -57,6 +57,8 @@ menuBtn.addEventListener("click", () => {
 
   dropdownMenu.classList.toggle("show-menu");
 
+  dropdownMenu.classList.contains("show-menu") ? menuBtn.classList.add("active") : menuBtn.classList.remove("active");
+
   if (dropdownMenu.classList.contains("show-menu")) {
     window.scrollTo({
       top: 0,
