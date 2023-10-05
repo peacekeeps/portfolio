@@ -507,15 +507,15 @@ section#formacao {
 .skill-container {
   display: grid;
   grid-template-columns: 1fr 10px 1fr;
-  grid-template-rows: 200px 50px 50px 50px 50px 50px 50px;
+  grid-template-rows: 200px 50px 50px 50px 50px 50px 50px 50px;
   justify-items: center;
-  color: rgb(255, 255, 255);
   background-color: #f2f2f2ab;
   width: 100%;
   margin: 0;
   padding: 1rem;
   gap: 1.5rem;
   height: 100%;
+  transition: .3s;
   /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.485);; */
 }
 
@@ -532,14 +532,14 @@ section#formacao {
   height: 100%;
   border-radius: 10px;
 
-  box-shadow: inset -1px -1px 4px 0px rgb(0, 102, 133);
-  border: 0.1px solid rgba(0, 0, 0, 0.301);
-  background-color: rgba(255, 255, 255, 0);
+  /* box-shadow: inset -1px -1px 4px 0px rgb(0, 102, 133);
+  border: 0.1px solid rgba(0, 0, 0, 0.301); */
+  background-image: linear-gradient(to bottom, rgb(0, 102, 133) 80%, transparent);
 }
 
 .dot-a {
   position: absolute;
-  top: 26px;
+  top: 51px;
   transform: translateX(calc(-50% + 1px));
   width: 10px;
   height: 10px;
@@ -565,7 +565,7 @@ section#formacao {
 .dot-b {
   position: absolute;
   transform: translateX(calc(-50% + 1px));
-  top: 136px;
+  top: 187px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -588,7 +588,7 @@ section#formacao {
 
 .dot-c {
   position: absolute;
-  top: 200px;
+  top: 271px;
   transform: translateX(calc(-50% + 1px));
   width: 10px;
   height: 10px;
@@ -598,6 +598,18 @@ section#formacao {
   border: 0.1px solid rgba(0, 132, 147, 0.664);
   background-color: rgb(255, 255, 255);
 }
+
+.dot-c:before {
+    content: "";
+    position: absolute;
+    transform: translateY(calc(5px - 100%));
+    left: -100px;
+    width: 100px;
+    height: 1px;
+    background-image: linear-gradient(to left, #9c9c9c 60%, transparent);
+    border-radius: 10%;
+    z-index: -1;
+  }
 
 .skill-box {
   width: 100%;
@@ -611,12 +623,13 @@ section#formacao {
 
 .skill-box h3 {
     display: flex;
-    align-items: baseline;
+    align-content: end;
     flex-wrap: wrap;
     height: 40px;
     gap: 0.5rem;
     line-height: 1rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.485);
+    color: rgb(31, 121, 124);
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.485); */
   }
 
 #sb-2 {
@@ -625,11 +638,11 @@ section#formacao {
 }
 
 #sb-2 h3 {
-    height: 56px;
+    height: 104px;
 }
 
 #sb-3 {
-    grid-row: 4;
+    grid-row: 5;
 }
 
 .skill-sub-school {
@@ -640,15 +653,20 @@ section#formacao {
 }
 
 .skill-box a {
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.485);
+  color: rgb(31, 121, 124);
+  /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.485); */
+}
+
+.skill-box p {
+    color: black;
+    text-shadow: none;
 }
 
 .skill-sub {
   font-family: var(--subtitle);
   font-size: 0.8rem;
   font-weight: 600;
-  margin-top: 0.5rem;
+  margin-top: 0.9rem;
   text-shadow: -1px 1px 0 var(--txt-shadow), 1px 1px 0 var(--txt-shadow),
     1px -1px 0 var(--txt-shadow), -1px -1px 0 var(--txt-shadow);
 }
@@ -691,7 +709,11 @@ section#formacao {
   height: 200px;
 }
 
-@media (max-width: 300px) {
+@media (min-width: 400px) {
+    .skill-container {
+        grid-template-rows: 200px 50px 50px 50px 50px 50px 50px;
+    }
+}
   /*
 =========================
 Cabeça
@@ -723,7 +745,6 @@ Botões de Next e Previous
   .p-previous-btn:hover .fa-solid {
     color: white;
   }
-}
 
 .show-menu {
   left: 0;
